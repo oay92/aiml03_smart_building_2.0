@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aiml03.project.util.PathConverter;
 
-
 @WebServlet("/userprofile")
 public class ToUserProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;

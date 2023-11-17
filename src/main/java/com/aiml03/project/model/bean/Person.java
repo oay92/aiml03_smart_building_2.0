@@ -96,4 +96,9 @@ public class Person {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+	
+	public Person() {
+    
+    }
+
 }
