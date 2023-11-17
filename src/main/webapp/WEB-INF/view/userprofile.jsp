@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.aiml03.project.model.bean.Person" %>
-<%@ page import="com.aiml03.project.model.bean.Person" %>
+<%@ page import="com.aiml03.project.model.bean.NumberPlate" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
 <title>${webName}-personal</title>
-
 <jsp:include page="${component}/common_dependencies.jsp" />
-
 <style><%@include file="/WEB-INF/css/userprofile.css"%></style>
-
 </head>
 
 <body>
 	<jsp:useBean id="userProfileData" class="com.aiml03.project.model.bean.Person" scope="request" />
 	<jsp:setProperty name="userProfileData" property="*" />
+	
+	<jsp:useBean id="numberPlateData" class="com.aiml03.project.model.bean.NumberPlate" scope="request" />
+	<jsp:setProperty name="numberPlateData" property="*" />
+	
 	<jsp:include page="${component}/header.jsp" />
 
 	<main>
@@ -91,7 +93,7 @@
 										<p class="mb-0">License Plate</p>
 									</div>
 									<div class="col-sm-9">
-										<p class="text-muted mb-0"><jsp:getProperty name="userProfileData" property="building_num" /></p>
+										<p class="text-muted mb-0"><jsp:getProperty name="numberPlateData" property="number_plate" /></p>
 									</div>
 								</div>
 							</div>
@@ -160,22 +162,40 @@
 			var modal = document.getElementById('modalWrapper');
 			modal.classList.add('active');
 		}
-
-		function addMessage(event) {
-			event.preventDefault();
-			var message = document.getElementById('messageInput').value;
-			// 在留言區域添加新留言
-			document.getElementById('messages').innerHTML += '<p>' + message
-					+ '</p>';
-			document.getElementById('messageInput').value = '';
-			clearMessages();
-		}
-
 		function clearMessages() {
 			var messagesContainer = document.getElementById('messages');
 			messagesContainer.innerHTML = '';
 		}
+		
+		function addMessage(event) {
+		    var message = document.getElementById('messageInput').value;
 
+		    var data = {
+		        message: message
+		    };
+
+		    fetch('/message', {
+		        method: 'POST',
+		        headers: {
+		            'Content-Type': 'application/json'
+		        },
+		        body: JSON.stringify(data)
+		    })
+		    .then(response => {
+		        if (!response.ok) {
+		            throw new Error('Network response was not ok');
+		        }
+		        document.getElementById('messageInput').value = '';
+		        clearMessages();
+		        console.log('Message sent successfully!');
+		    })
+		    .catch(error => {
+		        console.error('There was a problem sending the message:', error);
+		    });
+		}
+
+
+		
 		function hideModal() {
 			var modal = document.getElementById('modalWrapper');
 			modal.classList.remove('active');
