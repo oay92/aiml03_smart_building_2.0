@@ -65,9 +65,9 @@ function addMessage(event) {
 		});
 }
 
-
-
 function hideModal() {
 	var modal = document.getElementById('modalWrapper');
 	modal.classList.remove('active');
 }
+
+

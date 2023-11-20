@@ -3,6 +3,7 @@
 <%@ page import="com.aiml03.project.model.bean.Person" %>
 <%@ page import="com.aiml03.project.model.bean.NumberPlate" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,7 @@
 </head>
 
 <body>
+
 	<jsp:useBean id="userProfileData" class="com.aiml03.project.model.bean.Person" scope="request" />
 	<jsp:setProperty name="userProfileData" property="*" />
 	
@@ -102,6 +104,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div>
 					<button onclick="showModal()">Leave a message</button>
 					<div id="modalWrapper">
@@ -117,12 +120,20 @@
 								<textarea id="messageInput" rows="5" cols="50"></textarea>
 								<br> <input type="button" value="Send"
 									onclick="addMessage()">
-								<button onclick="hideModal()">Close</button>
+								<button class="text-muted mb-0" onclick="hideModal()">Close</button>
 							</form>
 						</div>
 					</div>
-
 				</div>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<form action="/ToHistory" method="get">
+							<button class="btn btn-link" type="submit">View History</button>
+						</form>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</main>
