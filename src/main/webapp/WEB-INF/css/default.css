@@ -7,3 +7,14 @@ body
     font-size: 18px;
     margin: 0px;
 }
+
+.page-title
+{
+	text-align:center;
+	font-size: 32px;
+}
+
+.default-height
+{
+	height: 45px;	
+}

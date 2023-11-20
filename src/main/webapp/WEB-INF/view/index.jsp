@@ -14,16 +14,24 @@
 	</head>
 	<body>
 		<form name="myForm" action="${root}/Index.do" method="post">
-			<ul class="nav justify-content-end">
-			  <li class="nav-item">
-			    <a class="nav-link active" aria-current="page" href="#" onclick="submitForm('user')">User</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="#" onclick="submitForm('admin')">Admin</a>
-			  </li>
-			</ul>
+		
+  			<header class="p-3 bg-dark text-white">
+    			<div class="container">		
+					<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+						<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+							<li><a class="nav-link px-2 text-white">Smart Building</a></li>
+						</ul>
+				        <div class="text-end">
+				        	<button type="button" class="btn btn-outline-light me-2" onclick="submitForm('user')">User Login</button>
+				          	<button type="button" class="btn btn-outline-light me-2" onclick="submitForm('admin')">Admin Login</button>
+				        </div>
+					</div>
+				</div>
+			</header>
+		
 			<br><br>
-			<h1 style="text-align:center">Smart Building</h1>
+			<h1 style="text-align:center">Smart Buildings</h1>
+
 			
 			<input type="hidden" name="accountLevel" id="accountLevel">
 		</form>		

@@ -13,6 +13,7 @@
 		<script><%@include file="/WEB-INF/js/admin.js"%></script>		
 	</head>
 	<body>
+		<jsp:include page="${component}/header.jsp"></jsp:include>
 		<br><br>
 		<form name="myForm" action="${root}/Admin.do" method="post">		
 			<div style="margin:auto; width:70%">

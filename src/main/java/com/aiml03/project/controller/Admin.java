@@ -29,9 +29,9 @@ public class Admin extends HttpServlet
 		{
 			response.sendRedirect("account");
 		}
-		else if (myPage.equals("people"))
+		else if (myPage.equals("person"))
 		{
-			response.sendRedirect("people");
+			response.sendRedirect("buildingUnit");
 		}
 		else if (myPage.equals("plate"))
 		{

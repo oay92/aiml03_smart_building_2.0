@@ -15,8 +15,8 @@ public class ToIndex extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ExecutePythonScript pythonScript = new ExecutePythonScript();
-		pythonScript.runPython();
+//		ExecutePythonScript pythonScript = new ExecutePythonScript();
+//		pythonScript.runPython();
 				
 		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);
 	}

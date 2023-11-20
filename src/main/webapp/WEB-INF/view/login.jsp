@@ -14,11 +14,12 @@
 	</head>
 	
 	<body onload="document.getElementById('userID').focus()">
+		<jsp:include page="${component}/header.jsp"></jsp:include>
 		<br><br>
 		<form name="myForm" action="${root}/Login.do?level=${level}" method="post">
-			<div style="width: 30%; margin:auto">
+			<div style="width: 40%; margin:auto">
 				<div class="row">
-					<div class="col"><p style="text-align:center;font-size:32px;">${level} Login</p></div>
+					<div class="col"><p class="page-title">${level} Login</p></div>
 				</div>
 				<div class="row">
 					<div class="col"><span style="text-align:center;color:red">${error}</span></div>

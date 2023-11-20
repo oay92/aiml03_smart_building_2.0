@@ -14,59 +14,48 @@
 		<script><%@include file="/WEB-INF/js/account.js"%></script>		
 	</head>
 	<body>
-		<br><br>
-		
+		<jsp:include page="${component}/adminHeader.jsp"></jsp:include>
+		<br><br>		
 		<form name="myForm" action="${root}/Account.do" method="post">
 			<div style="width:40%;margin:auto">
-				<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-				  <ol class="breadcrumb">
-				    <li class="breadcrumb-item"><a href="${root}/admin">Home</a></li>
-				    <li class="breadcrumb-item active" aria-current="page">Account Registration</li>
-				  </ol>
-				</nav>			
+				<div class="row">
+					<div class="col"><p class="page-title">Account Registration</p></div>
+				</div>
 				
-				<div style="width:90%;margin:auto">			
+				<div class="row">
+					<div class="col">
+						<label for="userID" class="form-label" style="margin-right:10px">Level:</label>
+
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="level" id="inlineRadio1" value="admin" onchange="document.getElementById('userID').focus()">
+						  	<label class="form-check-label" for="inlineRadio1">Admin</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  	<input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="user" onchange="document.getElementById('userID').focus()">
+						  	<label class="form-check-label" for="inlineRadio2">User</label>
+						</div>	
+						<span style="color:red;margin-left:20px" id="error1"></span>					
+					</div>				  
+				</div>				
 				
-					<br>
-					<div class="row">
-						<div class="col"><p style="text-align:center;font-size:32px;">Account Registration</p></div>
-					</div>
-					
-					<div class="row">
-						<div class="col">
-							<label for="userID" class="form-label" style="margin-right:10px">Level:</label>
-	
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="level" id="inlineRadio1" value="admin" onchange="document.getElementById('userID').focus()">
-							  	<label class="form-check-label" for="inlineRadio1">Admin</label>
-							</div>
-							<div class="form-check form-check-inline">
-							  	<input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="user" onchange="document.getElementById('userID').focus()">
-							  	<label class="form-check-label" for="inlineRadio2">User</label>
-							</div>	
-							<span style="color:red;margin-left:20px" id="error1"></span>					
-						</div>				  
-					</div>				
-					
-					<br>
-					
-					<div class="row">
-						<div class="col"><label for="userID" class="form-label">User ID:</label><span style="color:red;margin-left:20px" id="error2"></span></div>					
-					</div>
-					<div class="row">
-						<input type="text" class="form-control" name="userID" id="userID" onkeypress="if (event.keyCode == 13) document.getElementById('password').focus()">				
-					</div>
-					<div class="row">
-						<div class="col"><label for="password" class="form-label">Password:</label><span style="color:red;margin-left:20px" id="error3"></span></div>					
-					</div>
-					<div class="row">
-						<input type="text" class="form-control" name="password" id="password" onkeypress="if (event.keyCode == 13) submitForm()">				
-					</div>	
-					<br>
-					<div class="row">
-						<div class="col" style="text-align:right"><button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm()">Submit</button></div>
-					</div>								
+				<br>
+				
+				<div class="row">
+					<div class="col"><label for="userID" class="form-label">User ID:</label><span style="color:red;margin-left:20px" id="error2"></span></div>					
+				</div>
+				<div class="row">
+					<input type="text" class="form-control" name="userID" id="userID" onkeypress="if (event.keyCode == 13) document.getElementById('password').focus()">				
+				</div>
+				<div class="row">
+					<div class="col"><label for="password" class="form-label">Password:</label><span style="color:red;margin-left:20px" id="error3"></span></div>					
+				</div>
+				<div class="row">
+					<input type="text" class="form-control" name="password" id="password" onkeypress="if (event.keyCode == 13) submitForm()">				
 				</div>	
+				<br>
+				<div class="row">
+					<div class="col" style="text-align:right"><button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm()">Submit</button></div>
+				</div>											
 			</div>	
 			
 			<!-- Popup 1 -->
