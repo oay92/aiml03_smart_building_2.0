@@ -41,8 +41,7 @@ public class Account extends HttpServlet
 			{
 				account.insertAccountInfo(userID, password, level);
 				response.sendRedirect("account?display2=block");
-			}
-			
+			}			
 		} 
 		catch (Exception e) 
 		{

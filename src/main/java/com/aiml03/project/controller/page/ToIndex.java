@@ -17,7 +17,7 @@ public class ToIndex extends HttpServlet {
 		
 		ExecutePythonScript pythonScript = new ExecutePythonScript();
 		pythonScript.runPython();
-		
+				
 		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);
 	}
 

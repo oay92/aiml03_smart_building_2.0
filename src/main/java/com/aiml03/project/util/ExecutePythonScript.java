@@ -13,13 +13,18 @@ public class ExecutePythonScript
 		cmd[1] = "C:/Demo/myscript.py";
 		cmd[2] = "hi";
 		
-	    try 
-	    {
-	    	Runtime.getRuntime().exec(cmd);
+		try 
+		{
+			Process p = Runtime.getRuntime().exec(cmd);
+			p.waitFor();
 		} 
-	    catch (IOException e) 
-	    {
-			e.printStackTrace();
+		catch (IOException e1) 
+		{
+			e1.printStackTrace();
+		}
+		catch (InterruptedException e2) 
+		{
+			e2.printStackTrace();
 		}
 	}
 }
