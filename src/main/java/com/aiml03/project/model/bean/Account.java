@@ -1,5 +1,7 @@
 package com.aiml03.project.model.bean;
 
+import com.aiml03.project.util.DataFormat;
+
 public class Account {
 
 	private int aID;
@@ -8,6 +10,7 @@ public class Account {
 	private String level;
 	private int updatePassword;
 	
+	private DataFormat format = new DataFormat();
 	public Account(int aID, String userID, String password, String level, int updatePassword) {
 		super();
 		this.aID = aID;
@@ -24,19 +27,19 @@ public class Account {
 		this.aID = aID;
 	}
 	public String getUserID() {
-		return userID;
+		return format.formatString(userID);
 	}
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 	public String getPassword() {
-		return password;
+		return format.formatString(password);
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	public String getLevel() {
-		return level;
+		return format.formatString(level);
 	}
 	public void setLevel(String level) {
 		this.level = level;

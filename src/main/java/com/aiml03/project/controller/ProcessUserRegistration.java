@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aiml03.project.model.bean.Person;
 import com.aiml03.project.model.dao.PersonDAO;
@@ -25,23 +26,27 @@ public class ProcessUserRegistration extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		//Retrieve from data
-		String buildingNum = request.getParameter("buildingNum");
-		String unitNum = request.getParameter("unitNum");				
-		String userName = request.getParameter("userName");
-		String userEmail = request.getParameter("userEmail");
-		String userPhone = request.getParameter("userPhone");		
-		String[] contact = request.getParameterValues("primaryContact");
-		
-		DataFormat format = new DataFormat();
-		int primary = 0;		
-		if (contact != null)
-			primary = ((format.formatString(contact[0]).equals("1")) ? 1: 0);
-		
-		String userPhoto = "";
-		
-
-		Person person = new Person(0, buildingNum, unitNum, userName, userEmail, userPhone, userPhoto, primary, 0);
+//		String buildingNum = request.getParameter("buildingNum");
+//		String unitNum = request.getParameter("unitNum");				
+//		String userName = request.getParameter("userName");
+//		String userEmail = request.getParameter("userEmail");
+//		String userPhone = request.getParameter("userPhone");		
+//		String[] contact = request.getParameterValues("primaryContact");
+//		
+//		DataFormat format = new DataFormat();
+//		int primary = 0;		
+//		if (contact != null)
+//			primary = ((format.formatString(contact[0]).equals("1")) ? 1: 0);
+//		
+//		String userPhoto = "";
+//		Person person = new Person(0, buildingNum, unitNum, userName, userEmail, userPhone, userPhoto, primary, 0);
 	
+		String myPhoto = request.getParameter("myPhoto");
+				
+		HttpSession session = request.getSession();
+		Person person = (Person) session.getAttribute("person");
+		person.setPhoto(myPhoto);
+		
 		try 
 		{
 			Connection conn = ConnectionFactory.getConnection();
@@ -51,13 +56,15 @@ public class ProcessUserRegistration extends HttpServlet
 		
 			//Insert user information into the database
 			personDAO.insertPerson(person);
+			
+			conn.close();
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("userRegister?buildingNum="+buildingNum+"&unitNum="+unitNum);
+		response.sendRedirect("userRegister?buildingNum="+person.getBuildingNum()+"&unitNum="+person.getUnitNum());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

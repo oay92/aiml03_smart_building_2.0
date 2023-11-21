@@ -1,5 +1,7 @@
 package com.aiml03.project.model.bean;
 
+import com.aiml03.project.util.DataFormat;
+
 public class Person 
 {
 	private int pID;
@@ -11,6 +13,12 @@ public class Person
 	private String photo;
 	private int primaryContact;
 	private int enabled;
+	
+	private DataFormat format = new DataFormat();
+
+	public Person() {
+		super();
+	}
 	
 	public Person(int pID, String buildingNum, String unitNum, String name, String email, String phone, String photo,
 			int primaryContact, int enabled) {
@@ -32,37 +40,37 @@ public class Person
 		this.pID = pID;
 	}
 	public String getBuildingNum() {
-		return buildingNum;
+		return format.formatString(buildingNum);
 	}
 	public void setBuildingNum(String buildingNum) {
 		this.buildingNum = buildingNum;
 	}
 	public String getUnitNum() {
-		return unitNum;
+		return format.formatString(unitNum);
 	}
 	public void setUnitNum(String unitNum) {
 		this.unitNum = unitNum;
 	}
 	public String getName() {
-		return name;
+		return format.formatString(name);
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getEmail() {
-		return email;
+		return format.formatString(email);
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getPhone() {
-		return phone;
+		return format.formatString(phone);
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getPhoto() {
-		return photo;
+		return format.formatString(photo);
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
@@ -79,7 +87,4 @@ public class Person
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
-
-
-
 }

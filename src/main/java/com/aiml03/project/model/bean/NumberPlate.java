@@ -1,5 +1,7 @@
 package com.aiml03.project.model.bean;
 
+import com.aiml03.project.util.DataFormat;
+
 public class NumberPlate {
 	private int nID;
 	private String building_num;
@@ -7,6 +9,7 @@ public class NumberPlate {
 	private String name;
 	private String number_plate;
 
+	private DataFormat format = new DataFormat();
 	public NumberPlate(int nID, String building_num, int unit_num, String name, String number_plate) {
 		super();
 		this.nID = nID;
@@ -24,7 +27,7 @@ public class NumberPlate {
 		this.nID = nID;
 	}
 	public String getBuilding_num() {
-		return building_num;
+		return format.formatString(building_num);
 	}
 	public void setBuilding_num(String building_num) {
 		this.building_num = building_num;

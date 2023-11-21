@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,9 +32,11 @@
 		
 			<br><br>
 			<h1 style="text-align:center">Smart Buildings</h1>
-
-			
+		
 			<input type="hidden" name="accountLevel" id="accountLevel">
 		</form>		
+
+		<br><br>
+		<jsp:include page="${component}/footer.jsp"></jsp:include>
 	</body>
 </html>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,49 +14,62 @@
 		<script><%@include file="/WEB-INF/js/admin.js"%></script>		
 	</head>
 	<body>
-		<jsp:include page="${component}/header.jsp"></jsp:include>
+		<jsp:include page="${component}/simpleHeader.jsp"></jsp:include>
 		<br><br>
 		<form name="myForm" action="${root}/Admin.do" method="post">		
-			<div style="margin:auto; width:70%">
+			<div style="margin:auto; width:50%">
 				<div class="row">
-					<!-- Column 1 -->	
-					<div class="col-sm-3">
+					<!-- Column 1-1 -->	
+					<div class="col-sm-6">
 						<div class="card">
 					    	<div class="card-body">
-					        	<h5 class="card-title">Account Registration</h5>
-					        	<p class="card-text"><br><br></p>
-					        	<a href="#" class="btn btn-primary" style="width:100px" onClick="submitForm('account')">Go</a>
+					    		<div><img src="/SmartBuilding/img/register.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+					        	<div>
+									<h3 class="card-title" style="top:80px;left:22px;position:absolute;color:#0D6EFD;"></h3>
+									<br>	
+					        		<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('account')">Account Registration</a>			        	
+					        	</div>					        	
 							</div>
 						</div>
 					</div>
 				  
-				  	<!-- Column 2 -->
-					<div class="col-sm-3">
+				  	<!-- Column 1-2 -->
+					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title">Person Registration</h5>
-								<p class="card-text"><br><br></p>
-								<a href="#" class="btn btn-primary" style="width:100px" onClick="submitForm('person')">Go</a>
+								<div><img src="/SmartBuilding/img/building.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div>
+									<h3 class="card-title" style="top:80px;left:32px;position:absolute;color:#0D6EFD;"></h3>
+									<br>	
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('person')">Person Registration</a>
+								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Column 3 -->
-					<div class="col-sm-3">
+					<!-- Column 2-1 -->
+					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title">License Plate Registration</h5>
-								<p class="card-text"><br><br></p>
-								<a href="#" class="btn btn-primary" style="width:100px" onClick="submitForm('plate')">Go</a>
+								<div><img src="/SmartBuilding/img/car.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div>
+									<div style="top:100px;left:28px;position:absolute;color:#FFFFED;font-size:22px"></div>
+									<br>
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('plate')">License Plate Registration</a>
+								</div>								
 							</div>
 						</div>
 					</div>
-					<!-- Column 4 -->
-					<div class="col-sm-3">
+					<!-- Column 2-2 -->
+					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title">Search</h5>
-								<p class="card-text"><br><br></p>
-								<a href="#" class="btn btn-primary" style="width:100px" onClick="submitForm('search')">Go</a>
+								<div><img src="/SmartBuilding/img/search.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div>
+									<div style="top:100px;left:28px;position:absolute;color:#FFFFED;font-size:22px"></div>
+									<br>
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('search')">Search</a>
+								</div>	
+								
 							</div>
 						</div>
 					</div>							  
@@ -64,5 +78,8 @@
 		
 			<input type="hidden" name="myPage" id="myPage">
 		</form>
+		
+		<br><br>
+		<jsp:include page="${component}/footer.jsp"></jsp:include>
 	</body>
 </html>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,8 +12,9 @@
 		<style><%@include file="/WEB-INF/css/default.css"%></style>
 		
 		<script>
-		function submitForm(bno, uno)
+		function submitForm(page, bno, uno)
 		{        
+			document.getElementById("myPage").value = page;
 			document.getElementById("buildingNum").value = bno;
 			document.getElementById("unitNum").value = uno;
 			document.forms["myForm"].submit();				
@@ -22,7 +24,7 @@
 	<body>
 		<jsp:include page="${component}/adminHeader.jsp"></jsp:include>
 		<br><br>
-		<form name="myForm" action="${root}/ProcessUserRegistration.do" method="post">
+		<form name="myForm" action="${root}/takePhoto" method="post">
 			<div style="width:40%;margin:auto">
 				<div class="row">
 					<div class="col"><p class="page-title">User Registration</p></div>
@@ -63,17 +65,24 @@
 					<div class="col"><label for="userPhone" class="form-label">Phone:</label><span style="color:red;margin-left:20px" id="error3"></span></div>					
 				</div>
 				<div class="row">
-					<div class="col"><input type="text" class="form-control" name="userPhone" id="userPhone" onkeypress="if (event.keyCode == 13) submitForm('${buildingNum}', '${unitNum}')"></div>									
+					<div class="col"><input type="text" class="form-control" name="userPhone" id="userPhone" onkeypress="if (event.keyCode == 13) submitForm('photo', '${buildingNum}', '${unitNum}')"></div>									
 				</div>
 				
 				<br>
 				<div class="row">
-					<div class="col" style="text-align:right"><button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm('${buildingNum}', '${unitNum}')">Submit</button></div>
+					<div class="col" style="text-align:right">
+						<button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm('done', '${buildingNum}', '${unitNum}')">Done</button>
+						<button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm('photo', '${buildingNum}', '${unitNum}')">Next</button>
+					</div>
 				</div>
 			</div>	
 			
 			<input type="hidden" name="buildingNum" id="buildingNum" value="">
 			<input type="hidden" name="unitNum" id="unitNum" value="">
+			<input type="hidden" name="myPage" id="myPage" value="">
 		</form>
+		
+		<br><br>
+		<jsp:include page="${component}/footer.jsp"></jsp:include>		
 	</body>
 </html>

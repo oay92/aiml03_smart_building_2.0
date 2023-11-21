@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/Admin.do")
 public class Admin extends HttpServlet 
@@ -21,6 +22,19 @@ public class Admin extends HttpServlet
 		while(rNames.hasMoreElements())
 		{
 			request.removeAttribute((String)rNames.nextElement());
+		}			
+		
+		// Clean Session Attributes
+		HttpSession session = request.getSession();
+		Enumeration<String> sNames = session.getAttributeNames();
+		while(sNames.hasMoreElements())
+		{
+			String attributeName = (String)sNames.nextElement();
+			if (!attributeName.equals("account"))
+			{
+				System.out.println("remove session attribute: " + attributeName);
+				session.removeAttribute(attributeName);
+			}
 		}			
 		
 		String myPage = request.getParameter("myPage");

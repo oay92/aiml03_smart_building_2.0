@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page import="com.aiml03.project.model.bean.Person" %>
 <%@ page import="com.aiml03.project.model.bean.NumberPlate" %>
 
@@ -138,7 +139,8 @@
 		</div>
 	</main>
 
-	<jsp:include page="${component}/footer.jsp" />
+		<br><br>
+		<jsp:include page="${component}/footer.jsp"></jsp:include>
 </body>
 
 </html>

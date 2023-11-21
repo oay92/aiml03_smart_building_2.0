@@ -1,27 +1,23 @@
-package com.aiml03.project.controller.page;
+package com.aiml03.project.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.aiml03.project.util.PathConverter;
-
-/**
- * Servlet implementation class ToSearchBy
- */
-
-@WebServlet("/searchBy")
-
-public class ToSearchBy extends HttpServlet {
+@WebServlet("/Logout.do")
+public class Logout extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);
+		HttpSession session = request.getSession();
+		session.invalidate();
+		response.sendRedirect("index");		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

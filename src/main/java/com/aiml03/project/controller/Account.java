@@ -32,7 +32,8 @@ public class Account extends HttpServlet
 			AccountDAO account = new AccountDAO(conn);
 
 			boolean found = account.isAccountExist(userID);
-			found = false;
+			conn.close();
+			
 			if (found)
 			{
 				response.sendRedirect("account?display1=block");

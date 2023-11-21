@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=BIG5" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,9 +52,12 @@
 				<br>
 				<!-- Submit Button -->
 				<div class="row">
-					<div class="col" style="text-align:right"><button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm()">Submit</button></div>
+					<div class="col" style="text-align:right"><button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm()">Next</button></div>
 				</div>	
 			</div>
 		</form>
+		
+		<br><br>
+		<jsp:include page="${component}/footer.jsp"></jsp:include>
 	</body>
 </html>
