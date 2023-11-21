@@ -49,7 +49,7 @@
 					<input type="text" class="form-control" name="unitNum" id="unitNum" onkeypress="if (event.keyCode == 13) submitForm()">				
 				</div>	
 				<br>
-				<!-- Submit Button -->
+				<!-- Next Button -->
 				<div class="row">
 					<div class="col" style="text-align:right"><button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm()">Next</button></div>
 				</div>	
