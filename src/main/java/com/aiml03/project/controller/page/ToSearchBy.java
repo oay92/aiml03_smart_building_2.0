@@ -10,13 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aiml03.project.util.PathConverter;
 
-/**
- * Servlet implementation class ToSearchBy
- */
 
-@WebServlet("/searchBy")
-
-public class ToSearchBy extends HttpServlet {
+@WebServlet("/adminSearchBy")
+public class ToSearchBy extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

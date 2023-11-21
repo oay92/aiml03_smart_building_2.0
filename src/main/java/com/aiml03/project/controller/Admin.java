@@ -53,7 +53,7 @@ public class Admin extends HttpServlet
 		}
 		else if (myPage.equals("search"))
 		{
-			response.sendRedirect("search");
+			response.sendRedirect("adminSearchBy");
 		}
 	}
 
