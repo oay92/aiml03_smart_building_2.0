@@ -38,8 +38,10 @@ public class Login extends HttpServlet
 			AccountDAO accountDAO = new AccountDAO(conn);
 			Account account = accountDAO.findAccountByUserIDAndPassword(userID, password);
 			
+			conn.close();
+			
 			if (account == null)
-			{
+			{				
 				request.setAttribute("error", "Login Failed !!");
 				request.getRequestDispatcher("login").forward(request, response);
 			}
@@ -55,8 +57,6 @@ public class Login extends HttpServlet
 				else if (account.getLevel().equals("user"))
 					response.sendRedirect("user");
 			}
-		
-			conn.close();
 		} 
 		catch (Exception e) 
 		{

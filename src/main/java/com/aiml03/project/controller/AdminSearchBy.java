@@ -34,7 +34,8 @@ public class AdminSearchBy extends HttpServlet
 			
 			request.setAttribute("personList", personList);
 			
-			request.getRequestDispatcher(PathConverter.convertToWebInfPath("adminSearchBy")).forward(request, response);
+			conn.close();
+			request.getRequestDispatcher("adminSearchBy").forward(request, response);
 		} 
 		catch (Exception e) 
 		{

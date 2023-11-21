@@ -32,12 +32,13 @@ public class ChangePassword extends HttpServlet
 			AccountDAO accountDAO = new AccountDAO(conn);
 			
 			accountDAO.updatePassword(password, account.getaID());
+			conn.close();
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
-		
+				
 		response.sendRedirect("changePassword?display=block");
 	}
 

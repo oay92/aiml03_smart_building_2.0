@@ -1,4 +1,4 @@
-package com.aiml03.project.controller;
+package com.aiml03.project.controller.page;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,49 +9,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aiml03.project.model.dao.AccountDAO;
 import com.aiml03.project.util.ConnectionFactory;
+import com.aiml03.project.util.PathConverter;
 
-@WebServlet("/Account.do")
-public class Account extends HttpServlet 
+@WebServlet("/licensePlate2")
+public class ToLicensePlate2 extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String level = request.getParameter("level");
-		String userID = request.getParameter("userID");
-		String password = request.getParameter("password");
+		String buildingNum = request.getParameter("buildingNum");
+		String unitNum = request.getParameter("unitNum");
 		
-		request.removeAttribute("display1");
-		request.removeAttribute("display2");
+		request.setAttribute("buildingNum", buildingNum);
+		request.setAttribute("unitNum", unitNum);
 		
 		try 
 		{
 			Connection conn = ConnectionFactory.getConnection();
-			AccountDAO account = new AccountDAO(conn);
-
-			boolean found = account.isAccountExist(userID);
-			conn.close();
 			
-			if (found)
-			{
-				response.sendRedirect("account?display1=block");
-			}
-			else
-			{
-				account.insertAccountInfo(userID, password, level);
-				response.sendRedirect("account?display2=block");
-			}			
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
+				
+		
+		
+		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		doGet(request, response);
 	}
+
 }

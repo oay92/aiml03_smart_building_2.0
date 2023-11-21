@@ -2,57 +2,51 @@ package com.aiml03.project.model.bean;
 
 import com.aiml03.project.util.DataFormat;
 
-public class NumberPlate {
+public class NumberPlate 
+{
 	private int nID;
-	private String building_num;
-	private int unit_num;
-	private String name;
-	private String number_plate;
-
+	private String buildingNum;
+	private String unitNum;
+	private String numberPlate;
+	private int enabled;
 	private DataFormat format = new DataFormat();
-	public NumberPlate(int nID, String building_num, int unit_num, String name, String number_plate) {
+	
+	public NumberPlate(int nID, String buildingNum, String unitNum, String numberPlate, int enabled) {
 		super();
 		this.nID = nID;
-		this.building_num = building_num;
-		this.unit_num = unit_num;
-		this.name = name;
-		this.number_plate = number_plate;
-
+		this.buildingNum = buildingNum;
+		this.unitNum = unitNum;
+		this.numberPlate = numberPlate;
+		this.enabled = enabled;
 	}
-	
 	public int getnID() {
 		return nID;
 	}
 	public void setnID(int nID) {
 		this.nID = nID;
 	}
-	public String getBuilding_num() {
-		return format.formatString(building_num);
+	public String getBuildingNum() {
+		return format.formatString(buildingNum);
 	}
-	public void setBuilding_num(String building_num) {
-		this.building_num = building_num;
+	public void setBuildingNum(String buildingNum) {
+		this.buildingNum = buildingNum;
 	}
-	public int getUnit_num() {
-		return unit_num;
+	public String getUnitNum() {
+		return format.formatString(unitNum);
 	}
-	public void setUnit_num(int unit_num) {
-		this.unit_num = unit_num;
+	public void setUnitNum(String unitNum) {
+		this.unitNum = unitNum;
 	}
-	public String getName() {
-		return name;
+	public String getNumberPlate() {
+		return format.formatString(numberPlate);
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNumberPlate(String numberPlate) {
+		this.numberPlate = numberPlate;
 	}
-	public String getNumber_plate() {
-		return number_plate;
+	public int getEnabled() {
+		return enabled;
 	}
-	public void setNumber_plate(String number_plate) {
-		this.number_plate = number_plate;
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
-
-	public NumberPlate() {
-	    
-    }
-
 }

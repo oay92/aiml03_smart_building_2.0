@@ -17,7 +17,7 @@ public class AccountDAO {
 	
 	public Account findAccountByUserIDAndPassword(String userID, String password) throws SQLException
 	{
-		final String SQL = "SELECT * FROM aiml03.account WHERE BINARY user_id = ? AND BINARY password = ?";		
+		final String SQL = "SELECT * FROM aiml03.account WHERE BINARY user_id = ? AND BINARY password = ? AND enabled = 1";		
 		PreparedStatement preState = conn.prepareStatement(SQL);
 		preState.setString(1, userID);
 		preState.setString(2, password);		
@@ -43,7 +43,7 @@ public class AccountDAO {
 	public boolean isAccountExist(String userID) throws SQLException
 	{
 		boolean found = false;
-		final String SQL = "SELECT * FROM aiml03.account WHERE BINARY user_id = ?";
+		final String SQL = "SELECT * FROM aiml03.account WHERE BINARY user_id = ? AND enabled = 1";
 		PreparedStatement preState = conn.prepareStatement(SQL);
 		preState.setString(1, userID);
 		

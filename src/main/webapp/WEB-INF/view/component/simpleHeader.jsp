@@ -11,7 +11,7 @@
 			
 			<c:if test="${account != null}">
 				<div class="dropdown text-end">
-					Welcome, ${account.userID }
+					Welcome, ${account.userID}&nbsp;
 					<a href="${root}/Logout.do"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
 				</div>
 			</c:if>

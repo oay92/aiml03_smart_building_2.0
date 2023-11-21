@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <title>Timestamp History</title>
     <jsp:include page="${component}/common_dependencies.jsp" />
-	<style><%@include file="/WEB-INF/css/userprofile.css"%></style>
-	<script><%@include file="/WEB-INF/js/userprofile.js"%></script>
+
 
 </head>
 <body>
