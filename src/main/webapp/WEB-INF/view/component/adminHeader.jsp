@@ -14,14 +14,16 @@
 				<li><a class="nav-link px-2 text-white">|</a></li>
 				<li><a href="${root}/Admin.do?myPage=plate" class="nav-link px-2 text-white">License Plate REG</a></li>
 				<li><a class="nav-link px-2 text-white">|</a></li>
-				<li><a href="${root}/Admin.do?myPage=search" class="nav-link px-2 text-white">License Plate REG</a></li>
+				<li><a href="${root}/Admin.do?myPage=search" class="nav-link px-2 text-white">Search</a></li>
 			</ul>
 			
 			
 			<c:if test="${account != null}">
 				<div class="dropdown text-end">
-					Welcome, ${account.userID}&nbsp;
+					Welcome, ${account.userID}
+					<span style="margin-left:10px">
 					<a href="${root}/Logout.do"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
+					</span>
 				</div>
 			</c:if>
 		</div>

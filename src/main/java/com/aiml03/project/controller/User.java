@@ -53,25 +53,11 @@ public class User extends HttpServlet
 			String buildingNum = "", unitNum = "";
 			if (account != null)
 			{
-				unitNum = account.getUserID().substring(1, account.getUserID().length());
 				buildingNum = account.getUserID().substring(0, 1);
+				unitNum = account.getUserID().substring(1, account.getUserID().length());
 			}
 			
-			try 
-			{
-				Connection conn = ConnectionFactory.getConnection();
-				PersonDAO personDAO = new PersonDAO(conn);
-				List<Person> personList = personDAO.getAllPersonByBuildingNumberAndUnitNumber(buildingNum, unitNum);
-				
-				conn.close();
-				request.setAttribute("personList", personList);
-			} 
-			catch (Exception e) 
-			{
-				e.printStackTrace();
-			}
-			
-			request.getRequestDispatcher(PathConverter.convertToWebInfPath("userProfile")).forward(request, response);
+			response.sendRedirect("profile?buildingNum="+buildingNum+"&unitNum="+unitNum);
 		}
 		else if (myPage.equals("lobby"))
 		{

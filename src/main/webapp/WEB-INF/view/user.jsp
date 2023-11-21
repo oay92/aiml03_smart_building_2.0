@@ -28,7 +28,7 @@
 					<div class="col-sm-6">
 						<div class="card">
 					    	<div class="card-body">
-					    		<div><img src="/SmartBuilding/img/register.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+					    		<div><img src="/SmartBuilding/img/profile.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
 					        	<div>
 									<h3 class="card-title" style="top:80px;left:22px;position:absolute;color:#0D6EFD;"></h3>
 									<br>	
@@ -42,11 +42,11 @@
 					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<div><img src="/SmartBuilding/img/building.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div><img src="/SmartBuilding/img/lobby.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
 								<div>
 									<h3 class="card-title" style="top:80px;left:32px;position:absolute;color:#0D6EFD;"></h3>
 									<br>	
-									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('lobby')">Lobby Access</a>
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('lobby')">Lobby Access Timestamp</a>
 								</div>
 							</div>
 						</div>
@@ -55,11 +55,11 @@
 					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<div><img src="/SmartBuilding/img/car.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div><img src="/SmartBuilding/img/parking.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
 								<div>
 									<div style="top:100px;left:28px;position:absolute;color:#FFFFED;font-size:22px"></div>
 									<br>
-									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('parking-lot')">Parking Lot Access</a>
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('parking-lot')">Parking Lot Access Timestamp</a>
 								</div>								
 							</div>
 						</div>
@@ -68,7 +68,7 @@
 					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
-								<div><img src="/SmartBuilding/img/search.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div><img src="/SmartBuilding/img/chat.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
 								<div>
 									<div style="top:100px;left:28px;position:absolute;color:#FFFFED;font-size:22px"></div>
 									<br>

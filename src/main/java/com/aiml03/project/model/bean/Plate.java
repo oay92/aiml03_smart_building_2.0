@@ -2,7 +2,7 @@ package com.aiml03.project.model.bean;
 
 import com.aiml03.project.util.DataFormat;
 
-public class NumberPlate 
+public class Plate 
 {
 	private int nID;
 	private String buildingNum;
@@ -11,7 +11,7 @@ public class NumberPlate
 	private int enabled;
 	private DataFormat format = new DataFormat();
 	
-	public NumberPlate(int nID, String buildingNum, String unitNum, String numberPlate, int enabled) {
+	public Plate(int nID, String buildingNum, String unitNum, String numberPlate, int enabled) {
 		super();
 		this.nID = nID;
 		this.buildingNum = buildingNum;

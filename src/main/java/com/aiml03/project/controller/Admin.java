@@ -49,7 +49,7 @@ public class Admin extends HttpServlet
 		}
 		else if (myPage.equals("plate"))
 		{
-			response.sendRedirect("licensePlate");
+			response.sendRedirect("licensePlate1");
 		}
 		else if (myPage.equals("search"))
 		{
