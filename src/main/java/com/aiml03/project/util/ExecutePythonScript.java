@@ -15,7 +15,7 @@ public class ExecutePythonScript
 		try 
 		{
             // Command to run the Python script
-            String pythonScriptPath = "C:/workspace_aiml03_python/face_recognition_system/face_detection.py";
+            String pythonScriptPath = "C:/Users/Student/Desktop/aiml03_smart_building_3.0/face_recognition_system/face_detection.py";
             
             // Command and arguments to be executed
             String[] cmd = {"python", pythonScriptPath, pID};
