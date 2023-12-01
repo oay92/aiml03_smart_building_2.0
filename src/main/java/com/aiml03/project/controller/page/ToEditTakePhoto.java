@@ -12,8 +12,8 @@ import com.aiml03.project.model.bean.Person;
 import com.aiml03.project.util.DataFormat;
 import com.aiml03.project.util.PathConverter;
 
-@WebServlet("/takePhoto")
-public class ToTakePhoto extends HttpServlet 
+@WebServlet("/editTakePhoto")
+public class ToEditTakePhoto extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
@@ -21,6 +21,7 @@ public class ToTakePhoto extends HttpServlet
 	{
 		HttpSession session = request.getSession();
 		
+		String pID = request.getParameter("pID");
 		String buildingNum = request.getParameter("buildingNum");
 		String unitNum = request.getParameter("unitNum");				
 		String userName = request.getParameter("userName");
@@ -34,11 +35,11 @@ public class ToTakePhoto extends HttpServlet
 			primary = ((format.formatString(contact[0]).equals("1")) ? 1: 0);		
 		
 		String userPhoto = "";
-		Person person = new Person(0, buildingNum, unitNum, userName, userEmail, userPhone, userPhoto, primary, 0);
+		Person person = new Person(Integer.parseInt(pID), buildingNum, unitNum, userName, userEmail, userPhone, userPhoto, primary, 0);
 		
 		session.setAttribute("person", person);
 		
-		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);			
+		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);					
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

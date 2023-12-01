@@ -18,7 +18,7 @@
 		<jsp:include page="${component}/simpleHeader.jsp" />
 		<br><br>
 		<form name="myform">
-			<div style="margin:auto;width:40%">
+			<div style="margin:auto;min-height:100vh;width:40%">
 				<c:forEach items="${personList}" var="p">
 				<div class="card mb-3" style="width: 540px;">
 					<div class="row g-0">

@@ -45,11 +45,12 @@ public class Admin extends HttpServlet
 		}
 		else if (myPage.equals("person"))
 		{
-			response.sendRedirect("buildingUnit");
+			response.sendRedirect("buildingUnit?page=person");
 		}
 		else if (myPage.equals("plate"))
 		{
-			response.sendRedirect("licensePlate1");
+			//response.sendRedirect("licensePlate1");
+			response.sendRedirect("buildingUnit?page=plate");
 		}
 		else if (myPage.equals("search"))
 		{

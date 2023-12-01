@@ -17,7 +17,7 @@
 	<body onload="document.getElementById('password1').focus()">
 		<br><br>
 		<form name="myForm" action="${root}/ChangePassword.do" method="post">
-			<div style="width:40%;margin:auto">			
+			<div style="margin:auto;min-height:100vh;width:40%">			
 				<div class="row">
 					<div class="col"><p class="page-title">Change Password</p></div>
 				</div>

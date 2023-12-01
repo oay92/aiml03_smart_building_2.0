@@ -45,6 +45,28 @@ public class PlateDAO
 		return plateList;
 	}
 	
+	public boolean isNumberPlateExistByBuildingNumAndUnitNum(String buildingNum, String unitNum) throws SQLException
+	{
+		boolean found = false;
+		final String SQL = "SELECT * FROM aiml03.number_plate WHERE building_num = ? AND unit_num = ? AND enabled = 1";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		preState.setString(1, buildingNum);
+		preState.setString(2, unitNum);
+		
+		ResultSet rs = preState.executeQuery();
+		
+		if(rs.next())
+		{
+			found = true;
+		}
+		
+		rs.close();
+		preState.close();		
+		
+		return found;
+	}
+	
+	
 	public void deleteNumberPlateByID(int nID) throws SQLException
 	{
 		final String SQL = "UPDATE aiml03.number_plate SET enabled = 0 WHERE nID = ?";

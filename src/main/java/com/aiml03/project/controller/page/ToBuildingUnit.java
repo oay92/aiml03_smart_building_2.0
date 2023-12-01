@@ -19,6 +19,9 @@ public class ToBuildingUnit extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		String page = request.getParameter("page");
+
+		request.setAttribute("page", page);
 		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);
 	}
 

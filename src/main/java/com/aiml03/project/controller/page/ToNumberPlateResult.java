@@ -9,16 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.aiml03.project.model.bean.Person;
-import com.aiml03.project.model.dao.PersonDAO;
+import com.aiml03.project.model.bean.Plate;
+import com.aiml03.project.model.dao.PlateDAO;
 import com.aiml03.project.util.ConnectionFactory;
-import com.aiml03.project.util.DataFormat;
 import com.aiml03.project.util.PathConverter;
 
-@WebServlet("/userRegisterResult")
-public class ToUserRegisterResult extends HttpServlet 
+@WebServlet("/numberPlateResult")
+public class ToNumberPlateResult extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
@@ -26,17 +24,15 @@ public class ToUserRegisterResult extends HttpServlet
 	{
 		String buildingNum = request.getParameter("buildingNum");
 		String unitNum = request.getParameter("unitNum");
-		
+
 		try 
 		{
 			Connection conn = ConnectionFactory.getConnection();
-			PersonDAO personDAO = new PersonDAO(conn);
+			PlateDAO plateDAO = new PlateDAO(conn);
+			List<Plate> plateList = plateDAO.getNumberPlateByBuildingNumAndUnitNum(buildingNum, unitNum);
 			
-			List<Person> personList = personDAO.getAllPersonByBuildingNumberAndUnitNumber(buildingNum, unitNum);
-			
-			conn.close();
-			
-			request.setAttribute("personList", personList);
+			if (plateList != null && plateList.size() > 0)
+				request.setAttribute("plateList", plateList);			
 		} 
 		catch (Exception e) 
 		{
@@ -53,5 +49,4 @@ public class ToUserRegisterResult extends HttpServlet
 	{
 		doGet(request, response);
 	}
-
 }

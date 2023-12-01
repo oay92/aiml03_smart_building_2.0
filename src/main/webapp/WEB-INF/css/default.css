@@ -5,7 +5,7 @@ body
 	font-family: 'Lato', sans-serif;
     font-size: 18px;
     margin: 0px;
-    min-height: 100vh;
+    height: 100%;
 }
 
 .page-title
@@ -17,4 +17,9 @@ body
 .default-height
 {
 	height: 45px;	
+}
+
+.header-link
+{
+	font-size:16px;
 }

@@ -27,7 +27,7 @@
 		<jsp:include page="${component}/adminHeader.jsp"></jsp:include>
 		<br><br>
 		<form name="myForm" action="${root}/AdminSearchBy.do" method="post">
-			<div class="container" style="margin:auto;width:40%">			
+			<div class="container" style="margin:auto;min-height:100vh;width:40%">			
 				<div><p class="page-title">"Discover your ideal residence effortlessly with our intuitive search function."</p></div>
 				<br>
 				

@@ -18,7 +18,7 @@
 		<jsp:include page="${component}/header.jsp"></jsp:include>
 		<br><br>
 		<form name="myForm" action="${root}/Login.do?level=${level}" method="post">
-			<div style="width: 40%; margin:auto">
+			<div style="margin:auto;min-height:100vh;width:40%;">
 				<div class="row">
 					<div class="col"><p class="page-title">${level} Login</p></div>
 				</div>

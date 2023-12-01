@@ -2,7 +2,6 @@ package com.aiml03.project.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,36 +9,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aiml03.project.model.bean.Person;
-import com.aiml03.project.model.dao.PersonDAO;
+import com.aiml03.project.model.dao.PlateDAO;
 import com.aiml03.project.util.ConnectionFactory;
-import com.aiml03.project.util.PathConverter;
 
-@WebServlet("/AdminSearchBy.do")
-public class AdminSearchBy extends HttpServlet 
+@WebServlet("/numberPlateResult.do")
+public class NumberPlateResult extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		String action = request.getParameter("action");
+		String nID = request.getParameter("nID");
 		String buildingNum = request.getParameter("buildingNum");
 		String unitNum = request.getParameter("unitNum");
 		
-		try 
+		if (action.equals("add"))
 		{
-			Connection conn = ConnectionFactory.getConnection();
-			PersonDAO personDAO = new PersonDAO(conn);
-			
-			List<Person> personList = personDAO.getAllPersonByBuildingNumberAndUnitNumber(buildingNum, unitNum);
-			
-			request.setAttribute("personList", personList);
-			
-			conn.close();
-			request.getRequestDispatcher("adminSearchBy").forward(request, response);
-		} 
-		catch (Exception e) 
+			response.sendRedirect("numberPlate?buildingNum="+buildingNum+"&unitNum="+unitNum);
+		}
+		else if (action.equals("delete"))
 		{
-			e.printStackTrace();
+			try 
+			{
+				Connection conn = ConnectionFactory.getConnection();
+				PlateDAO plateDAO = new PlateDAO(conn);
+				plateDAO.deleteNumberPlateByID(Integer.parseInt(nID));
+				
+				conn.close();
+				response.sendRedirect("numberPlateResult?buildingNum="+buildingNum+"&unitNum="+unitNum);	
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}			
 		}
 	}
 
@@ -47,5 +50,4 @@ public class AdminSearchBy extends HttpServlet
 	{
 		doGet(request, response);
 	}
-
 }

@@ -21,23 +21,27 @@
 	<body>
 		<jsp:include page="${component}/adminHeader.jsp"></jsp:include>
 		<br><br>
-		<form name="myForm" action="${root}/takePhoto" method="post">
+		<form name="myForm" action="${root}/editTakePhoto" method="post">
 			<div style="margin:auto;min-height:100vh;width:40%">
 				<div class="row">
 					<div class="col"><p class="page-title">User Registration</p></div>
 				</div>			
 			
 				<div class="row default-height">
-					<div class="col">Building #:<span style="margin-left:10px;color:#0000FF">${buildingNum}</span></div>
+					<div class="col">Building #:<span style="margin-left:10px;color:#0000FF">${person.buildingNum}</span></div>
 				</div>
 			
 				<div class="row default-height">
-					<div class="col">Unit #:<span style="margin-left:10px;color:#0000FF">${unitNum}</span></div>
+					<div class="col">Unit #:<span style="margin-left:10px;color:#0000FF">${person.unitNum}</span></div>
 				</div>
-				
 				<!-- Primary Contact-->				
 				<div class="form-check default-height">
-					<input class="form-check-input" type="checkbox" value="1" name="primaryContact" id="primaryContact">
+					<c:if test="${person.primaryContact == 1}">
+						<input class="form-check-input" type="checkbox" value="1" name="primaryContact" id="primaryContact" checked>
+					</c:if>
+					<c:if test="${person.primaryContact != 1}">
+						<input class="form-check-input" type="checkbox" value="1" name="primaryContact" id="primaryContact">
+					</c:if>					
 					<label class="form-check-label" for="primaryContact"> Primary Contact</label>
 				</div>				
 				
@@ -46,7 +50,7 @@
 					<div class="col"><label for="userName" class="form-label">Name:</label><span style="color:red;margin-left:20px" id="error1"></span></div>					
 				</div>
 				<div class="row default-height">
-					<div class="col"><input type="text" class="form-control" name="userName" id="userName" onkeypress="if (event.keyCode == 13) document.getElementById('userEmail').focus()"></div>									
+					<div class="col"><input type="text" class="form-control" name="userName" id="userName" value="${person.name}" onkeypress="if (event.keyCode == 13) document.getElementById('userEmail').focus()"></div>									
 				</div>
 			
 				<!-- Email -->
@@ -54,7 +58,7 @@
 					<div class="col"><label for="userEmail" class="form-label">Email:</label><span style="color:red;margin-left:20px" id="error2"></span></div>					
 				</div>
 				<div class="row default-height">
-					<div class="col"><input type="text" class="form-control" name="userEmail" id="userEmail" onkeypress="if (event.keyCode == 13) document.getElementById('userPhone').focus()"></div>									
+					<div class="col"><input type="text" class="form-control" name="userEmail" id="userEmail" value="${person.email}" onkeypress="if (event.keyCode == 13) document.getElementById('userPhone').focus()"></div>									
 				</div>				
 
 				<!-- Phone -->
@@ -62,20 +66,21 @@
 					<div class="col"><label for="userPhone" class="form-label">Phone:</label><span style="color:red;margin-left:20px" id="error3"></span></div>					
 				</div>
 				<div class="row">
-					<div class="col"><input type="text" class="form-control" name="userPhone" id="userPhone" onkeypress="if (event.keyCode == 13) submitForm('photo', '${buildingNum}', '${unitNum}')"></div>									
+					<div class="col"><input type="text" class="form-control" name="userPhone" id="userPhone" value="${person.phone}" onkeypress="if (event.keyCode == 13) submitForm('photo', '${buildingNum}', '${unitNum}')"></div>									
 				</div>
 				
 				<br>
 				<div class="row">
 					<div class="col" style="text-align:right">
-						<a href="${root}/admin"><button type="button" class="btn btn-primary" style="width:100px">Close</button></a>
+						<a href="${root}/userRegisterResult?buildingNum=${person.buildingNum}&unitNum=${person.unitNum}"><button type="button" class="btn btn-primary" style="width:100px">Close</button></a>
 						<button type="button" class="btn btn-primary" style="width:100px" onclick="submitForm()">Next</button>
 					</div>
 				</div>
 			</div>	
 			
-			<input type="hidden" name="buildingNum" value="${buildingNum}">
-			<input type="hidden" name="unitNum" value="${unitNum}">
+			<input type="hidden" name="buildingNum" value="${person.buildingNum}">
+			<input type="hidden" name="unitNum" value="${person.unitNum}">
+			<input type="hidden" name="pID" value="${person.pID}">
 		</form>
 		
 		<br><br>

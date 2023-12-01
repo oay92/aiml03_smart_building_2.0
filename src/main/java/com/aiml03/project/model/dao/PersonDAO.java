@@ -34,6 +34,19 @@ public class PersonDAO
 		preState.executeUpdate();
 	}
 	
+	public void updatePersonInfoByID(Person person) throws SQLException
+	{
+		final String SQL = "UPDATE aiml03.person SET name = ?, email = ?, phone = ?, photo = ?, primary_contact = ? WHERE pID = ?";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		preState.setString(1, person.getName());
+		preState.setString(2, person.getEmail());
+		preState.setString(3, person.getPhone());
+		preState.setString(4, person.getPhoto());
+		preState.setInt(5, person.getPrimaryContact());
+		preState.setInt(6, person.getpID());
+		preState.executeUpdate();		
+	}
+	
 	public List<Person> getAllPersonByBuildingNumberAndUnitNumber(String buildingNum, String unitNum) throws SQLException
 	{
 		final String SQL = "SELECT * FROM aiml03.person WHERE building_num = ? AND unit_num = ? AND enabled = 1";
@@ -61,5 +74,136 @@ public class PersonDAO
 		preState.close();
 		
 		return personList;
+	}
+	
+	public Person getPersonInfoByID(int pID) throws SQLException
+	{
+		Person person = null;
+		
+		final String SQL = "SELECT * FROM aiml03.person WHERE pID= ? AND enabled = 1";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		preState.setInt(1, pID);
+		
+		ResultSet rs = preState.executeQuery();
+		
+		if(rs.next())
+		{
+			String buildingNum = rs.getString("building_num");
+			String unitNum = rs.getString("unit_num");
+			String name = rs.getString("name");
+			String email = rs.getString("email");
+			String phone = rs.getString("phone");
+			String photo = rs.getString("photo");
+			int primaryContact = rs.getInt("primary_contact");
+			
+			person = new Person(pID, buildingNum, unitNum, name, email, phone, photo, primaryContact, 1);
+		}
+		
+		rs.close();
+		preState.close();
+		
+		return person;
+	}
+	
+	public int getLastInsertPID() throws SQLException
+	{
+		int pID = 0;
+		
+		final String SQL = "SELECT MAX(pID) AS pID FROM aiml03.person";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		
+		ResultSet rs = preState.executeQuery();
+		
+		if(rs.next())
+		{
+			pID = rs.getInt("pID");
+		}
+		
+		rs.close();
+		preState.close();		
+		
+		return pID;
+	}
+	
+	
+	
+	
+	public boolean isPersonFoundByBuildingNumberAndUnitNumber(String buildingNum, String unitNum) throws SQLException
+	{
+		boolean found = false;
+		final String SQL = "SELECT * FROM aiml03.person WHERE building_num = ? AND unit_num = ? AND enabled = 1";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		preState.setString(1, buildingNum);
+		preState.setString(2, unitNum);
+		
+		ResultSet rs = preState.executeQuery();
+		
+		if (rs.next())
+		{
+			found = true;
+		}
+		
+		rs.close();
+		preState.close();
+		
+		return found;
+	}
+	
+	public void deletePersonbyID(int pID) throws SQLException
+	{
+		final String SQL = "UPDATE aiml03.person SET enabled = 0 WHERE pID = ?";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		preState.setInt(1, pID);
+
+		preState.executeUpdate();
+	}
+	
+	public void insertFacialFeatures(int pID, List<String> features) throws SQLException
+	{
+		final String SQL = "INSERT INTO aiml03.`facial_features`(`pID`, `index_num`, `feature`) VALUES (?, ?, ?)";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		
+		int index = 0;
+		for(String feature: features)
+		{
+			index++;
+			double f = Double.parseDouble(feature);
+			
+			preState.setInt(1, pID);
+			preState.setInt(2, index);
+			preState.setDouble(3, f);
+			preState.addBatch();
+		}
+		
+		preState.executeBatch();
+	}
+	
+	public void updateFacialFeatures(int pID, List<String> features) throws SQLException
+	{
+		PreparedStatement preState = null;
+		
+		// Delete existing records
+		final String SQL1 = "DELETE FROM aiml03.`facial_features` WHERE `pID` = ?";
+		preState = conn.prepareStatement(SQL1);
+		preState.setInt(1, pID);
+		preState.addBatch();
+				
+		// Insert new records		
+		final String SQL2 = "INSERT INTO aiml03.`facial_features`(`pID`, `index_num`, `feature`) VALUES (?, ?, ?)";
+		preState = conn.prepareStatement(SQL2);
+		
+		int index = 0;
+		for(String feature: features)
+		{
+			index++;
+			double f = Double.parseDouble(feature);
+			
+			preState.setInt(1, pID);
+			preState.setInt(2, index);
+			preState.setDouble(3, f);
+			preState.addBatch();
+		}
+		
+		preState.executeBatch();		
 	}
 }

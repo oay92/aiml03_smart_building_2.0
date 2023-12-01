@@ -12,13 +12,11 @@
 		
 		<script><%@include file="/WEB-INF/webcamjs/webcam.min.js"%></script>	
 		<script><%@include file="/WEB-INF/webcamjs/webcam.js"%></script>	
-		
-		<style><%@include file="/WEB-INF/css/default.css"%></style>
 	</head>
 	<body>
 		<jsp:include page="${component}/adminHeader.jsp"></jsp:include>
 		<br><br>
-		<form name="myForm" action="${root}/ProcessUserRegistration.do" method="post">	
+		<form name="myForm" action="${root}/UpdateUserRegisterInfo.do" method="post">	
 			<div class="container" style="margin:auto;min-height:100vh;width:50%">
 				<div class="row" style="margin-bottom:10px;">
 					<div class="col">Name:<span style="margin-left:10px;color:#0000FF">${person.name}</span></div>

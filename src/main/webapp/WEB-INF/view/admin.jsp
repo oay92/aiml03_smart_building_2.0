@@ -17,7 +17,7 @@
 		<jsp:include page="${component}/simpleHeader.jsp"></jsp:include>
 		<br><br>
 		<form name="myForm" action="${root}/Admin.do" method="post">		
-			<div style="margin:auto; width:50%">
+			<div style="margin:auto;min-height:100vh;width:50%">
 				<div class="row">
 					<!-- Column 1-1 -->	
 					<div class="col-sm-6">

@@ -1,8 +1,6 @@
 package com.aiml03.project.controller.page;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,15 +13,15 @@ import com.aiml03.project.util.PathConverter;
 public class ToUserRegister extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String buildingNum = request.getParameter("buildingNum");
 		String unitNum = request.getParameter("unitNum");
-				
+		
 		request.setAttribute("buildingNum", buildingNum);
 		request.setAttribute("unitNum", unitNum);
-				
+		
 		request.getRequestDispatcher(PathConverter.convertToWebInfPath(request.getServletPath())).forward(request, response);
 	}
 
@@ -31,4 +29,5 @@ public class ToUserRegister extends HttpServlet
 	{
 		doGet(request, response);
 	}
+
 }
