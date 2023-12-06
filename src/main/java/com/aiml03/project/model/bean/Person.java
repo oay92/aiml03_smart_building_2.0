@@ -14,6 +14,9 @@ public class Person
 	private int primaryContact;
 	private int enabled;
 	
+	private String logDate;
+	private String logTime;
+	
 	private DataFormat format = new DataFormat();
 
 	public Person() {
@@ -33,6 +36,23 @@ public class Person
 		this.primaryContact = primaryContact;
 		this.enabled = enabled;
 	}
+	
+	public Person(int pID, String buildingNum, String unitNum, String name, String email, String phone, String photo,
+			int primaryContact, int enabled, String logDate, String logTime) {
+		super();
+		this.pID = pID;
+		this.buildingNum = buildingNum;
+		this.unitNum = unitNum;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.photo = photo;
+		this.primaryContact = primaryContact;
+		this.enabled = enabled;
+		this.logDate = logDate;
+		this.logTime = logTime;
+	}
+	
 	public int getpID() {
 		return pID;
 	}
@@ -87,4 +107,20 @@ public class Person
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+
+	public String getLogDate() {
+		return logDate;
+	}
+
+	public void setLogDate(String logDate) {
+		this.logDate = logDate;
+	}
+
+	public String getLogTime() {
+		return logTime;
+	}
+
+	public void setLogTime(String logTime) {
+		this.logTime = logTime;
+	}	
 }

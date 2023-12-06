@@ -9,6 +9,11 @@ public class Plate
 	private String unitNum;
 	private String numberPlate;
 	private int enabled;
+	
+	private String photo;
+	private String logDate;
+	private String logTime;
+	
 	private DataFormat format = new DataFormat();
 	
 	public Plate(int nID, String buildingNum, String unitNum, String numberPlate, int enabled) {
@@ -19,6 +24,19 @@ public class Plate
 		this.numberPlate = numberPlate;
 		this.enabled = enabled;
 	}
+	
+	public Plate(int nID, String buildingNum, String unitNum, String numberPlate, int enabled, String photo, String logDate, String logTime) {
+		super();
+		this.nID = nID;
+		this.buildingNum = buildingNum;
+		this.unitNum = unitNum;
+		this.numberPlate = numberPlate;
+		this.enabled = enabled;
+		this.photo = photo;
+		this.logDate = logDate;
+		this.logTime = logTime;
+	}
+
 	public int getnID() {
 		return nID;
 	}
@@ -48,5 +66,27 @@ public class Plate
 	}
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getLogDate() {
+		return logDate;
+	}
+
+	public void setLogDate(String logDate) {
+		this.logDate = logDate;
+	}
+
+	public String getLogTime() {
+		return logTime;
+	}
+
+	public void setLogTime(String logTime) {
+		this.logTime = logTime;
 	}
 }

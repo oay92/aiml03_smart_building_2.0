@@ -69,10 +69,35 @@
 									<br>
 									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('search')">Search</a>
 								</div>	
-								
 							</div>
 						</div>
-					</div>							  
+					</div>
+					<!-- Column 3-1 -->
+					<div class="col-sm-6">
+						<div class="card">
+							<div class="card-body">
+								<div><img src="/SmartBuilding/img/lobby.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div>
+									<div style="top:100px;left:28px;position:absolute;color:#FFFFED;font-size:22px"></div>
+									<br>
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('face-log')">Lobby Access Timestamp</a>
+								</div>	
+							</div>
+						</div>
+					</div>					
+					<!-- Column 3-2 -->
+					<div class="col-sm-6">
+						<div class="card">
+							<div class="card-body">
+								<div><img src="/SmartBuilding/img/parking.jpg" style="object-fit:cover;width:100%;opacity: 1;"></div>
+								<div>
+									<div style="top:100px;left:28px;position:absolute;color:#FFFFED;font-size:22px"></div>
+									<br>
+									<a href="#" class="btn btn-primary" style="width:100%" onClick="submitForm('plate-log')">Parking Lot Access Timestamp</a>
+								</div>	
+							</div>
+						</div>
+					</div>												  
 				</div>
 			</div>		
 		

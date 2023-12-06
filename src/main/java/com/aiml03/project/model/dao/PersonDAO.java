@@ -125,9 +125,6 @@ public class PersonDAO
 		return pID;
 	}
 	
-	
-	
-	
 	public boolean isPersonFoundByBuildingNumberAndUnitNumber(String buildingNum, String unitNum) throws SQLException
 	{
 		boolean found = false;
@@ -205,5 +202,33 @@ public class PersonDAO
 		}
 		
 		preState.executeBatch();		
+	}
+	
+	public List<Person> getFaceRecognitionHistory() throws SQLException
+	{
+		final String SQL = "select t2.pID, t2.name, t2.building_num, t2.unit_num, t1.photo, t1.log_date, t1.log_time from (select * from aiml03.face_recognition_log) t1 left join (select * from aiml03.person where enabled = 1) t2 on t1.pID = t2.pID order by log_date desc, log_time desc";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		
+		ResultSet rs = preState.executeQuery();
+		
+		List<Person> historyList = new ArrayList<Person>();
+		while(rs.next())
+		{
+			int pID = rs.getInt("pID");
+			String name = rs.getString("name");
+			String buildingNum = rs.getString("building_num");
+			String unitNum = rs.getString("unit_num");
+			String photo = rs.getString("photo");
+			String logDate = rs.getString("log_date");
+			String logTime = rs.getString("log_time");
+			
+			Person person = new Person(pID, buildingNum, unitNum, name, "", "", photo, 0, 1, logDate, logTime);
+			historyList.add(person);
+		}
+		
+		rs.close();
+		preState.close();
+		
+		return historyList;
 	}
 }

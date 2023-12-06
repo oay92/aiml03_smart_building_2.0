@@ -56,6 +56,14 @@ public class Admin extends HttpServlet
 		{
 			response.sendRedirect("adminSearchBy");
 		}
+		else if (myPage.equals("face-log"))
+		{
+			response.sendRedirect("faceRecognitionHistory");
+		}
+		else if (myPage.equals("plate-log"))
+		{
+			response.sendRedirect("plateRecognitionHistory");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
