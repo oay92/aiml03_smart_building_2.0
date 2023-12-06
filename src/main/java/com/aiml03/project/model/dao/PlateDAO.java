@@ -114,5 +114,33 @@ public class PlateDAO
 		preState.close();
 				
 		return historyList;
+	}
+	
+	public List<Plate> getNumberPlateRecognitionHistoryByBuildingNumAndUnitNum(String buildingNum, String unitNum) throws SQLException
+	{
+		final String SQL = "select t2.building_num, t2.unit_num, t2.number_plate, t1.nID, t1.photo, t1.log_date, t1.log_time from (select * from aiml03.number_plate_recognition_log) t1 left join (select * from aiml03.number_plate where enabled = 1) t2 on t1.nID = t2.nID where building_num = ? and unit_num = ? order by log_date desc, log_time desc;";
+		PreparedStatement preState = conn.prepareStatement(SQL);
+		preState.setString(1, buildingNum);
+		preState.setString(2, unitNum);
+		
+		ResultSet rs = preState.executeQuery();
+		
+		List<Plate> historyList = new ArrayList<Plate>();
+		while(rs.next())
+		{
+			int nID = rs.getInt("nID");
+			String numberPlate = rs.getString("number_plate");
+			String photo = rs.getString("photo");
+			String logDate = rs.getString("log_date");
+			String logTime = rs.getString("log_time");
+			
+			Plate plate = new Plate(nID, buildingNum, unitNum, numberPlate, 1, photo, logDate, logTime);
+			historyList.add(plate);
+		}
+		
+		rs.close();
+		preState.close();
+				
+		return historyList;
 	}	
 }

@@ -61,11 +61,11 @@ public class User extends HttpServlet
 		}
 		else if (myPage.equals("lobby"))
 		{
-			
+			response.sendRedirect("lobbyAccessHistory");
 		}
 		else if (myPage.equals("parking-lot"))
 		{
-			
+			response.sendRedirect("parkingLotAccessHistory");
 		}
 		else if (myPage.equals("chat"))
 		{
